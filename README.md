@@ -1,5 +1,5 @@
 
-# Full Stack Excel Template Project
+# Excel Template Project
 
 This project demonstrates basic functionality to download an Excel template, upload an Excel file, and parse data from the rows. It uses Node.js on the server side to handle Excel file operations and a React application with Vite on the client side for the user interface.
 
