@@ -17,8 +17,10 @@ async function createExcelTemplate() {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet("Template");
 
-  // Get the dynamically created excel items
+  // This is actually information that we will receive from the custom data template.
   const { templateId, templateVersion } = getExcelIdentifier();
+
+  // Get the dynamically created excel items, form fromDesigner of custom data template.
   const excelItems = getPD_ExcelItems();
 
   // Set the worksheet columns based on excelItems
@@ -82,8 +84,10 @@ async function createExcelTemplateFilled() {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet("Template");
 
-  // Get the dynamically created excel items
+  // This is actually information that we will receive from the custom data template.
   const { templateId, templateVersion } = getExcelIdentifier();
+  
+  // Get the dynamically created excel items, form fromDesigner of custom data template.
   const excelItems = getPD_ExcelItems();
 
   // Set the worksheet columns based on excelItems
@@ -166,7 +170,9 @@ async function parseUploadedExcel(file) {
   
   const uploadedTemplateId = metadataSheet.getCell('B1').value; // Assuming template ID is in cell B1
   const uploadedTemplateVersion = metadataSheet.getCell('B2').value; // Assuming template version is in cell B2
-  const { templateId, templateVersion } = getExcelIdentifier();
+
+    // This is actually information that we will receive from the custom data template.
+    const { templateId, templateVersion } = getExcelIdentifier();
   
   if (templateId !== uploadedTemplateId || templateVersion !== uploadedTemplateVersion) {
     throw new Error("Template ID or version does not match the expected values.");
@@ -178,6 +184,7 @@ async function parseUploadedExcel(file) {
     throw new Error("Template sheet not found in the uploaded Excel file.");
   }
 
+  // Get the dynamically created excel items, form fromDesigner of custom data template.
   const excelItems = getPD_ExcelItems();
   const parsedData = [];
   const errorMessages = [];

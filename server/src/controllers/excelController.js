@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
 const excelUtils = require("../utils/excelUtils");
+const { cleanUpUploadsDirectory } = require("../utils/fileUtils");
 
 exports.createTemplate = async (req, res) => {
   try {
@@ -57,11 +58,11 @@ exports.uploadTemplate = async (req, res) => {
     // delete the temporary file
     await fs.unlink(req.file.path);
 
-    console.log('errorMessages', errorMessages);
     if (errorMessages.length > 0) {
       // Write error messages to a text file
-      const errorPath = `./uploads/errors_data/errors_${timestamp}.json`
+      const errorPath = `./uploads/errors_data/errors_${timestamp}.txt`
       await fs.writeFile(errorPath, errorMessages.join('\n'), "utf8");
+      cleanUpUploadsDirectory();
 
       // Return a response with the error file download link
       return res.status(422).download(errorPath);
@@ -69,7 +70,8 @@ exports.uploadTemplate = async (req, res) => {
       // Write parsed data to a JSON file
       const outputPath = `./uploads/excels_data/excel_data_${timestamp}.json`;
       await fs.writeFile(outputPath, JSON.stringify(parsedData, null, 2), 'utf8');
-      
+      cleanUpUploadsDirectory();
+
       // If no errors, return success
       return res.status(200).json({ success: true, message: "File processed successfully without errors." });
     }

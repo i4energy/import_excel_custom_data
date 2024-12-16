@@ -46,5 +46,6 @@ pids
 .env.test
 
 # Custom directories for server
+server/uploads/
 server/uploads/errors_data/
 server/uploads/excels_data/

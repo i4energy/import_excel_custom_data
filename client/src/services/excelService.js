@@ -46,13 +46,15 @@ export const excelService = {
         return (status >= 200 && status < 300) || status === 422; // Resolve only if successful or if there's a validation error
       },
     });
-
+    
     if (response.status === 422) {
       // Handle the blob which is expected to be the error file
+      const timestamp = new Date().toISOString().replace(/[:\-T\.Z]/g, "");
+
       const url = URL.createObjectURL(response.data);
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "error_details.txt"); // Set the filename for download
+      link.setAttribute("download", `error_details_${timestamp}.txt`); // Set the filename for download
       document.body.appendChild(link);
       link.click();
       link.remove();
