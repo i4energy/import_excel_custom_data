@@ -1,0 +1,50 @@
+# Dependency directories
+**/node_modules/
+
+# Distribution / build directories
+**/dist/
+**/build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Custom directories for server
+server/uploads/errors_data/
+server/uploads/excels_data/
